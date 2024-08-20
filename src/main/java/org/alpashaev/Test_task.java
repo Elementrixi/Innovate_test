@@ -63,8 +63,8 @@ class DocumentManager {
         boolean matchesContent = request.getContainsContents() == null || request.getContainsContents().stream()
                 .anyMatch(content -> document.getContent().contains(content));
         boolean matchesAuthor = request.getAuthorIds() == null || request.getAuthorIds().contains(document.getAuthor().getId());
-        boolean matchesCreatedFrom = request.getCreatedFrom() == null || !document.getCreated().isAfter(request.getCreatedFrom());
-        boolean matchesCreatedTo = request.getCreatedTo() == null || !document.getCreated().isBefore(request.getCreatedTo());
+        boolean matchesCreatedFrom = request.getCreatedFrom() == null || document.getCreated().isAfter(request.getCreatedFrom());
+        boolean matchesCreatedTo = request.getCreatedTo() == null || document.getCreated().isBefore(request.getCreatedTo());
 
         return matchesTitle && matchesContent && matchesAuthor && matchesCreatedFrom && matchesCreatedTo;
     }
